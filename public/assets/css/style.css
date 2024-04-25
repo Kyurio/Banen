@@ -1,0 +1,75 @@
+:root {
+    --background-color: #FFF;
+    --button-color: #809BCE;
+    --button-text-color: #fff;
+    --hero-background-color: #EAC4D5;
+    --text-color: #fff;
+    --color-detail: #B8E0D2;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+button,
+select {
+    background-color: var(--button-color) !important;
+    color: var(--button-text-color) !important;
+    border-color: var(--button-color) !important;
+}
+
+link, li {
+    color: #fff !important;
+}
+
+.hero {
+    background-color: var(--hero-background-color);
+
+    p {
+        color: var(--text-color) !important;
+    }
+
+    h1 {
+        font-size: 6rem;
+    }
+}
+
+.navbar {
+    background-color: var(--hero-background-color);
+    color: var(--text-color) !important;
+}
+
+.oferta {
+    height: 8rem;
+    border: 1px solid var(--button-color);
+    background-color: #fff;
+
+    .oferta-icon {
+        background-color: var(--button-color) !important;
+        height: 3rem;
+        width: 3rem;
+        color: #fff !important;
+    }
+}
+
+.newsletter {
+    background-color: var(--hero-background-color);
+    p {
+        color: #fff;
+    }
+}
+
+.footer {
+    background-color: var(--hero-background-color);
+    a {
+        color: #fff;
+    }
+}
+
+
+.details {
+
+    background-color: var(--hero-background-color);
+    color: #fff;
+
+}

@@ -27,11 +27,12 @@ const ListadoPublicaciones = () => {
     useEffect(() => {
         const fetchListadoPublicaciones = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/ListadoPublicaciones/publicacion/');
+                const response = await fetch('http://127.0.0.1:8000/Publicaciones/');
                 if (!response.ok) {
                     throw new Error('Error al cargar los datos');
                 }
                 const data = await response.json();
+                console.log(data)
                 setPublicaciones(data);
                 setFilteredPublicaciones(data);
             } catch (error) {
@@ -110,7 +111,7 @@ const ListadoPublicaciones = () => {
                                     <MdWorkOutline />
                                 </div>
                                 <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium">{item.nom_oferta}</div>
+                                    <div className="font-medium text-black">{item.nom_oferta}</div>
                                     <div className="text-gray-600 text-sm"><b>sueldo bruto:</b> ${formatoMonedaChilena(item.bruto)}</div>
                                 </div>
                                 <div className="text-gray-600 text-xs">{item.cod_city}</div>

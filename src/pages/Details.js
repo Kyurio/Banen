@@ -164,7 +164,7 @@ function Details() {
                   <MdWorkOutline />
                 </div>
                 <div className="flex-1 pl-1 mr-16">
-                  <div className="font-medium">{item.nom_oferta}</div>
+                  <div className="font-medium text-black">{item.nom_oferta}</div>
                   <div className="text-gray-600 text-sm"><b>sueldo bruto:</b> ${formatoMonedaChilena(item.bruto)}</div>
                 </div>
                 <div className="text-gray-600 text-xs">{item.cod_city}</div>

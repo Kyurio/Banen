@@ -16,7 +16,6 @@ function LandingPage() {
       <Newsletter/>
       <Feature/>
       <Footer/>
-
     </div>
   );
 }

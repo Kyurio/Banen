@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   // Obtener el valor de la variable isLoggedIn del localStorage
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
   // Función para manejar el logout
   const handleLogout = () => {
@@ -15,7 +15,7 @@ function Navbar() {
 
   return (
     <nav className="flex justify-between px-20 py-10 items-center navbar">
-      <h1 className="text-xl text-gray-800 font-bold">Banen</h1>
+      <h1 className="text-xl font-bold">Banen</h1>
       <div className="flex items-center">
         <ul className="flex items-center space-x-6">
           <li>
@@ -24,16 +24,24 @@ function Navbar() {
           <li>
             <Link to="/register">Register</Link>
           </li>
-          {/* Cambiar el enlace de Login a Logout si isLoggedIn es true */}
-          {isLoggedIn === 'true' ? (
-            <li className="font-semibold text-gray-700">
-              <a onClick={handleLogout}>Logout</a>
-            </li>
+          {/* Mostrar el enlace de Login o Logout según si el usuario ha iniciado sesión */}
+          {isLoggedIn ? (
+            <>
+              <li className="font-semibold text-gray-700">
+                <a onClick={handleLogout}>Logout</a>
+              </li>
+              <li className="font-semibold text-gray-700">
+                <Link to="/admin">Perfil</Link>
+              </li>
+            </>
           ) : (
             <li className="font-semibold text-gray-700">
               <Link to="/login">Login</Link>
             </li>
           )}
+          <li className="font-semibold text-gray-700">
+            <Link to="/admin">Trabajos</Link>
+          </li>
         </ul>
       </div>
     </nav>

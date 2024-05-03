@@ -21,7 +21,7 @@ const FormLogin = () => {
                     password
                 })
             });
-            console.log(response);
+            console.log("respuesta usuario", response);
             const data = await response.json();
 
             if (!response.ok || !data) {
@@ -77,9 +77,9 @@ const FormLogin = () => {
             </div>
             {error && <p className="mt-4 text-red-500">{error}</p>}
             <div className="mt-4 text-center text-sm">
-                No tienes cuenta
+                <p>No tienes cuenta </p>
                 <a className="underline" href="#">
-                    Regístrate
+                     Regístrate
                 </a>
             </div>
         </form>

@@ -40,7 +40,7 @@ function Navbar() {
             </li>
           )}
           <li className="font-semibold text-gray-700">
-            <Link to="/admin">Trabajos</Link>
+            <Link to="/publicaciones">Trabajos</Link>
           </li>
         </ul>
       </div>

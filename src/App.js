@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AOS from 'aos';
-import { ToastContainer } from 'react-toastify'; // Importa ToastContainer
+import axios from 'axios';
+
+
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 // Estilos
 import 'aos/dist/aos.css';
 
 // Componentes
 import Navbar from './components/navbar/navbar';
-import Loader from './components/other/preloader';
 
 // Páginas
 import LandingPage from './pages/Landing';
@@ -17,6 +19,7 @@ import LoginPage from './pages/Login';
 import AdminPage from './pages/Admin';
 import Register from './pages/Register';
 import Details from './pages/Details';
+import Publicaciones from './pages/Publicaciones'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,7 +37,6 @@ function App() {
 
   return (
     <Router>
-      {loading && <Loader />}
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
@@ -54,6 +56,7 @@ function App() {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/detalle" element={<Details />} />
+        <Route path="/publicaciones" element={<Publicaciones />} />
       </Routes>
     </Router>
   );

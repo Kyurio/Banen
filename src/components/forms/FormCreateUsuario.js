@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 const FormularioRegistro = () => {
     // Estados para almacenar los valores de los campos del formulario
     const [rut, setRut] = useState('');

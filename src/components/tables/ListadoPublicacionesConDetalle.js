@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MdWorkOutline } from "react-icons/md";
-import axios from 'axios'; // Importar Axios
+import axios from 'axios';
+
 
 function Details() {
   const [publicacion, setPublicacion] = useState(null);
@@ -32,7 +33,7 @@ function Details() {
 
     const fetchDetallePublicacion = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/ListadoPublicacionesID/publicacionesId/${id}`);
+        const response = await axios.get(`http://127.0.0.1:8000/Publicacion/${id}`);
         setPublicacion(response.data);
       } catch (error) {
         setError(error.message);
@@ -45,10 +46,10 @@ function Details() {
   useEffect(() => {
     const fetchListadoPublicaciones = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/ListadoPublicaciones/publicacion/');
+        const response = await axios.get('http://127.0.0.1:8000/Publicaciones');
         setPublicaciones(response.data);
       } catch (error) {
-        console.error('Error:', error);
+        console.error('Error publicaciones:', error);
       }
     };
 
@@ -58,7 +59,7 @@ function Details() {
   useEffect(() => {
     const fetchRegiones = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/ListadoRegiones/Regiones/');
+        const response = await axios.get('http://127.0.0.1:8000/Regiones');
         setRegiones(response.data);
       } catch (error) {
         console.error('Error:', error);
@@ -85,28 +86,7 @@ function Details() {
 
   return (
     <div className="flex mt-10">
-      <section className="w-1/2 flex flex-col antialiased bg-gray-50 text-gray-600 min-h-screen  p-4">
-        <div className="h-full">
-          {publicacion && publicacion.map((item, index) => (
-            <div className=" details max-w-2xl mx-auto shadow-lg rounded-lg" key={index}>
-              <div className="px-6 py-5">
-                <div className="flex items-start">
-                  <div className="flex-grow truncate">
-                    <div className="w-full sm:flex justify-between items-center mb-3">
-                      <h2 className="text-2xl leading-snug font-extrabold text-gray-50 truncate mb-1 sm:mb-0">{item.nom_oferta}</h2>
-                    </div>
-                    <div className="flex items-end justify-between whitespace-normal">
-                      <div className="max-w-md">
-                        <div dangerouslySetInnerHTML={{ __html: item.descripcion }} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+
       <section className="w-1/2 flex flex-col antialiased bg-gray-50 text-gray-600 min-h-screen  p-4">
         <div className="flex">
           <select
@@ -131,20 +111,24 @@ function Details() {
             />
           </div>
         </div>
+
+
         <ul className="flex flex-col p-4">
           {currentItems.map((item, index) => (
-            <li className="oferta border-gray-400 flex flex-row mb-5" key={index}>
-              <div className="select-none cursor-pointer rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-                <div className="oferta-icon flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">
-                  <MdWorkOutline />
+            <a className=''>
+              <li className="oferta border-gray-400 flex flex-row mb-5" key={index}>
+                <div className="select-none cursor-pointer rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+                  <div className="oferta-icon flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4">
+                    <MdWorkOutline />
+                  </div>
+                  <div className="flex-1 pl-1 mr-16">
+                    <div className="font-medium text-black">{item.nom_oferta}</div>
+                    <div className="text-gray-600 text-sm"><b>sueldo bruto:</b> ${formatoMonedaChilena(item.bruto)}</div>
+                  </div>
+                  <div className="text-gray-600 text-xs">{item.cod_city}</div>
                 </div>
-                <div className="flex-1 pl-1 mr-16">
-                  <div className="font-medium text-black">{item.nom_oferta}</div>
-                  <div className="text-gray-600 text-sm"><b>sueldo bruto:</b> ${formatoMonedaChilena(item.bruto)}</div>
-                </div>
-                <div className="text-gray-600 text-xs">{item.cod_city}</div>
-              </div>
-            </li>
+              </li>
+            </a>
           ))}
         </ul>
         <nav aria-label="Page navigation example">
@@ -174,6 +158,12 @@ function Details() {
             </li>
           </ul>
         </nav>
+      </section>
+
+      <section className="w-1/2 flex flex-col antialiased bg-gray-50 text-gray-600 min-h-screen  p-4">
+        <div className="h-full">
+              detalle
+        </div>
       </section>
     </div>
   );

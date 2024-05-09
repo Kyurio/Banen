@@ -93,11 +93,7 @@ function Details() {
 
     <div>
 
-      <section className="hero flex items-center justify-center bg-white mt-20 mb-20">
-        <div className="text-center">
-          <h1 className="mt-3 text-[3.5rem] font-bold leading-[4rem] tracking-tight text-black">Encuentra tu trabajo ideal</h1>
-        </div>
-      </section>
+
 
       <div className="flex mt-10 mb-10">
 

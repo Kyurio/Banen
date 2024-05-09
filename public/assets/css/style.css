@@ -5,10 +5,15 @@
     --hero-background-color: #EAC4D5;
     --text-color: #fff;
     --color-detail: #B8E0D2;
+    --text-color: #949590;
 }
 
 body {
     background-color: var(--background-color);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: var(--text-color) !important
 }
 
 button,
@@ -22,21 +27,34 @@ link, li {
     color: #fff !important;
 }
 
+.button {
+    background-color: var(--button-color) !important;
+    color: var(--button-text-color) !important;
+    border-color: var(--button-color) !important;
+}
+
 .hero {
     background-color: var(--hero-background-color);
 
+
     p {
         color: var(--text-color) !important;
+        color: white !important;
     }
 
     h1 {
         font-size: 6rem;
+        color: white !important;
     }
 }
 
 .navbar {
     background-color: var(--hero-background-color);
     color: var(--text-color) !important;
+
+    a, p, spam, h1 {
+        color: white !important;
+    }
 }
 
 .oferta {
@@ -54,15 +72,15 @@ link, li {
 
 .newsletter {
     background-color: var(--hero-background-color);
-    p {
-        color: #fff;
+    p, h2 {
+        color: #fff !important;
     }
 }
 
 .footer {
     background-color: var(--hero-background-color);
-    a {
-        color: #fff;
+    a, h1 {
+        color: #fff !important;
     }
 }
 

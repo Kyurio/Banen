@@ -35,7 +35,6 @@ function Details() {
       try {
         const response = await axios.get(`http://127.0.0.1:8000/Publicacion/${id}`);
         setPublicacion(response.data);
-        console.log(response.data)
       } catch (error) {
         setError(error.message);
       }
@@ -101,7 +100,9 @@ function Details() {
           <div className="flex">
             <select
               id="dropdown-button"
-              className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
+              className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600
+              animate__backInLeft animate__backInLeft"
+
               onChange={(e) => setSearchTerm(e.target.value)}
             >
               <option value="">Todas las regiones</option>
@@ -201,18 +202,9 @@ function Details() {
                           </a>
                         </h2>
                         <div className="mb-2">
-                          <a href="#" className="text-sm text-gray-600 p-1 hover:text-black">
-                            <span className="text-opacity-50">#</span>
-                            react
-                          </a>
-                          <a href="#" className="text-sm text-gray-600 p-1 hover:text-black">
-                            <span className="text-opacity-50">#</span>
-                            javascript
-                          </a>
-                          <a href="#" className="text-sm text-gray-600 p-1 hover:text-black">
-                            <span className="text-opacity-50">#</span>
-                            tailwind
-                          </a>
+                          {
+                            selectedPublicacion.etiqueta
+                          }
                         </div>
                         <div className="mb-1 leading-6">
                           <div dangerouslySetInnerHTML={{ __html: selectedPublicacion.descripcion }} />

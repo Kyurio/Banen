@@ -96,7 +96,7 @@ function Details() {
           >
             <option value="">Todas las regiones</option>
             {regiones.map((region) => (
-              <option key={region.id_region} value={region.id_region}>
+              <option key={region.id_region} value={region.nom_region}>
                 {region.nom_region}
               </option>
             ))}

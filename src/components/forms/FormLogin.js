@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Importamos Axios
 
 const FormLogin = () => {
     const [username, setUsername] = useState('');
@@ -8,34 +9,29 @@ const FormLogin = () => {
     const navigate = useNavigate();
 
     const Login = async (event) => {
-
         event.preventDefault();
         try {
-            const response = await fetch('http://127.0.0.1:8000/login/login/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username,
-                    password
-                })
+            const response = await axios.post('http://127.0.0.1:8000/login/', {
+                username,
+                password
             });
-            console.log("respuesta usuario", response);
-            const data = await response.json();
 
-            if (!response.ok || !data) {
+            console.log(response.data)
+            console.log("entro")
+
+            if (response.data ===  "false") {
+
                 setError('Datos incorrectos!');
+
             } else {
 
+                localStorage.setItem('token', response.data);
                 localStorage.setItem('isLoggedIn', 'true');
                 navigate('/admin');
-
             }
         } catch (error) {
             setError('Error al iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
         }
-
     };
 
     return (

@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-
 
 import Footer from '../components/sections/Footer';
 
 function AdminPage() {
-  // Obtener el valor de la variable isLoggedIn del localStorage
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  
+  const [token, setToken] = useState(null);
 
-  // Verificar si el usuario está autenticado
-  if (isLoggedIn !== 'true') {
-    // Si el usuario no está autenticado, redirigir al login
-    window.location.href = '/login'; // Cambia '/login' por la ruta adecuada
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    const storedName = localStorage.getItem('name');
+    setToken(storedToken);
+
+  }, []);
+
+
+  if (!token) {
+    console.log("no hay session abierta")
   }
 
-  // Si el usuario está autenticado, mostrar la página de administrador
   return (
 
     <div className="bg-gray-100">
@@ -22,15 +26,16 @@ function AdminPage() {
 
       <div className="container mx-auto py-8">
         <div className="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
+          
 
           <div className="col-span-4 sm:col-span-3">
             <div className="profile shadow rounded-lg p-6">
               <div className="flex flex-col items-center">
-                <img src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/08ca10cde3d56d1e9b3bb59f0d21eb0e~c5_100x100.jpeg?lk3s=a5d48078&x-expires=1714338000&x-signature=PZiJ7bLkPmaE65sWyRb%2BqNDrTh0%3D"
+                <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.instagram.com%2Fdiganmepaul%2F%3Flocale%3Dde&psig=AOvVaw280UScw87D2VCw-JSRbnr8&ust=1715445044471000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJDfvPbAg4YDFQAAAAAdAAAAABAE"
                   className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                   alt="Profile" />
 
-                <h1 className="text-xl font-bold">jose asecas</h1>
+                <h1 className="text-xl font-bold"></h1>
                 <p className="">Software Developer & comediante</p>
 
                 <br />
@@ -107,7 +112,6 @@ function AdminPage() {
       </div>
 
 
-      <Footer />
     </div>
 
   );
